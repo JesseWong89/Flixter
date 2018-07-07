@@ -6,13 +6,13 @@ class Instructor::LessonsController < ApplicationController
     
     def create
         @section = Section.find(params[:section_id])
-        @lesson = @section.lessons.create(lessons_params)
+        @lesson = @section.lessons.create(lesson_params)
         redirect_to instructor_course_path(@section.course)
     end
     
     private
     
-    def lessons_params
+    def lesson_params
         params.require(:lesson).permit(:title, :subtitle)
     end
 end
